@@ -94,7 +94,7 @@ def find_and_display_sections(udl_input, length_input):
             st.subheader("Optimal Section")
             display_section_details(optimal_section_1)
         else:
-            st.write("No valid sections available from Manufacturer 1.")
+            st.write("No valid sections available from Manufacturer 1. Try a smaller load or length.")
 
     with col2:
         st.header("Manufacturer 2")
@@ -109,7 +109,7 @@ def find_and_display_sections(udl_input, length_input):
             st.subheader("Optimal Section")
             display_section_details(optimal_section_2)
         else:
-            st.write("No valid sections available from Manufacturer 2.")
+            st.write("No valid sections available from Manufacturer 2. Try a smaller load or length.")
 
     # Determine and display the most cost-effective manufacturer
     if optimal_section_1 is not None and optimal_section_2 is not None:
@@ -122,7 +122,7 @@ def find_and_display_sections(udl_input, length_input):
     elif optimal_section_2 is not None:
         st.success("Only Manufacturer 2 offers a valid section.")
     else:
-        st.error("No valid sections available from either manufacturer.")
+        st.error("No valid sections available from either manufacturer. Try a smaller load or length.")
 
 # Add a separator
 st.markdown("---")
@@ -133,10 +133,10 @@ st.header("Input Parameters")
 col_input_1, col_input_2, col_input_3 = st.columns([1, 1, 1])
 
 with col_input_1:
-    udl_input = st.number_input('UDL Input [kN/m] (Less than 8 is a good range)', min_value=0.0, value=0.0)
+    udl_input = st.number_input('UDL Input [kN/m] (Less than 4 is a good range)', min_value=0.0, value=0.0)
 
 with col_input_2:
-    length_input = st.number_input('Length Input [m] (Less than 20 is a good range)', min_value=0.0, value=0.0)
+    length_input = st.number_input('Length Input [m] (Less than 18 is a good range)', min_value=0.0, value=0.0)
 
 with col_input_3:
     if st.button('Find Optimal Sections'):
