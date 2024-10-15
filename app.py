@@ -124,11 +124,29 @@ def find_and_display_sections(udl_input, length_input):
     else:
         st.error("No valid sections available from either manufacturer.")
 
-# Get user inputs
-st.sidebar.header("Input Parameters")
-udl_input = st.sidebar.number_input('UDL Input [kN/m] (Less than 8 is a good range)', min_value=0.0, value=0.0)
-length_input = st.sidebar.number_input('Length Input [m] (Less than 20 is a good range)', min_value=0.0, value=0.0)
+# Add a separator
+st.markdown("---")
 
-# Button for predicting
-if st.sidebar.button('Find Optimal Sections'):
-    find_and_display_sections(udl_input, length_input)
+# Input parameters in the main area
+st.header("Input Parameters")
+
+col_input_1, col_input_2, col_input_3 = st.columns([1, 1, 1])
+
+with col_input_1:
+    udl_input = st.number_input('UDL Input [kN/m] (Less than 8 is a good range)', min_value=0.0, value=0.0)
+
+with col_input_2:
+    length_input = st.number_input('Length Input [m] (Less than 20 is a good range)', min_value=0.0, value=0.0)
+
+with col_input_3:
+    if st.button('Find Optimal Sections'):
+        find_and_display_sections(udl_input, length_input)
+        
+# Get user inputs
+# st.sidebar.header("Input Parameters")
+# udl_input = st.sidebar.number_input('UDL Input [kN/m] (Less than 8 is a good range)', min_value=0.0, value=0.0)
+# length_input = st.sidebar.number_input('Length Input [m] (Less than 20 is a good range)', min_value=0.0, value=0.0)
+
+# # Button for predicting
+# if st.sidebar.button('Find Optimal Sections'):
+#     find_and_display_sections(udl_input, length_input)
